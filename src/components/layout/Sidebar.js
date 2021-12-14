@@ -1,4 +1,5 @@
 import React from 'react'
+import { Projects } from './Projects'
 import {
     FaInbox,
     FaChevronDown,
@@ -35,8 +36,8 @@ export const Sidebar = () => {
                 </span>
                 <h2>projects</h2>
             </div>
-            <ul className="sidebar__projects">projects will be here!</ul>
-            Add Project Component Here!!!!!!!!!!!!!!
+            <ul className="sidebar__projects"><Projects/></ul>
+            <Projects/>
         </div>
     )
 }
