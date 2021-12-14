@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { firebase } from "../firebase";
-import collatedTasksExits from '../helpers'
+import {collatedTasksExits} from '../helpers'
 import moment from "moment";
 
 export const useTasks = (selectedproject) => {
@@ -8,10 +8,9 @@ export const useTasks = (selectedproject) => {
     const [archivedTasks, setArchivedTasks] = useState([]);
 
     useEffect(()=>{
-        let unsubscirbe = firebase
-        .firestore()
+        let unsubscirbe = firebase.firestore()
         .collection('tasks')
-        .where('userId' , '==', vijay123);
+        .where('userId' , '==', "vijay123");
 
         unsubscirbe = 
             selectedproject && !collatedTasksExits(selectedproject)
