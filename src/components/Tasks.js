@@ -4,14 +4,13 @@ import { useTasks } from '../hooks';
 import { Checkbox } from './Checkbox';
 import { collatedTasks } from '../constant';
 import { getTitle, getCollatedTitle, collatedTasksExist } from '../helpers'
-
 import { useProjectsValue, useSelectedProjectValue, useSelectedProjectvalue } from '../context';
 
 export const Tasks = () => {
-    const  selectedProject  = useSelectedProjectValue();
-    const  projects = useProjectsValue()
+    const selectedProject = useSelectedProjectValue();
+    const projects = useProjectsValue()
     const { tasks } = useTasks(selectedProject);
-    console.log("ghjg", tasks);
+    console.log("ghjghhhh", tasks);
     let projectName = '';
 
     if (projects && selectedProject && !collatedTasksExist(selectedProject)) {
@@ -25,9 +24,9 @@ export const Tasks = () => {
     }
 
     useEffect(() => {
-        
-        document.title = `${projectName}`
+        document.title = `${projectName}:Todoist`
     }, [])
+
     return (
         <div className='tasks' data-testid="tasks">
             <h2 data-testid="project-name">{projectName}</h2>
