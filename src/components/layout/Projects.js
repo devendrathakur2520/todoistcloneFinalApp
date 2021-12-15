@@ -1,10 +1,13 @@
 import React from 'react'
 import { useState } from 'react'
+import { useDispatch } from 'react-redux';
+import { setselectedProject } from '../../actions';
 import { useProjectsValue, useSelectedProjectValue } from '../../context';
 import { IndividualProject, InduvisualProject } from './IndividualProject';
 
 export const Projects = ({ activeValue = null }) => {
     const [active, setActive] = useState(activeValue);
+    const dispatch = useDispatch();
     const { setSelectedProject } = useSelectedProjectValue();
     const  projects = useProjectsValue();
     console.log("iiiiiiiii", projects);
@@ -25,12 +28,12 @@ export const Projects = ({ activeValue = null }) => {
                         }
                         onKeyDown={() => {
                             setActive(project.projectId);
-                            setSelectedProject(project.projectId);
+                        dispatch(setselectedProject(project.projectId));
                         }}
 
                         onClick={() => {
                             setActive(project.projectId);
-                            setSelectedProject(project.projectId);
+                            dispatch(setselectedProject(project.projectId));
                         }}
                     ><IndividualProject project={project}/></li>
                 ))

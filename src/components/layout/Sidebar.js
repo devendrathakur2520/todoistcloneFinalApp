@@ -1,13 +1,16 @@
 import React from 'react'
-import { Projects } from './Projects'
 import {
     FaInbox,
     FaChevronDown,
     FaRegCalendar,
     FaCalendarAlt
-} from 'react-icons/fa'
+} from 'react-icons/fa';
+import { Projects } from './Projects'
+import AddProject from '../AddProject'
 
 export const Sidebar = () => {
+
+  
     return (
         <div className="sidebar" data-testid="sidebar">
             <ul className="sidebar__generi">
@@ -37,7 +40,8 @@ export const Sidebar = () => {
                 <h2>projects</h2>
             </div>
             <ul className="sidebar__projects"> <Projects/></ul>
-            <Projects/>
+            <AddProject/>
+        
         </div>
     )
 }

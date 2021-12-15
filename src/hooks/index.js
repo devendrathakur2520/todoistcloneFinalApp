@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { firebase } from "../firebase";
 import { useDispatch,useSelector} from "react-redux";
 import { settask,setArchivedTasks,setProjects } from "../actions";
-import { collatedTasksExits } from '../helpers'
+import { collatedTasksExist } from '../helpers'
 import moment from "moment";
 
 export const useTasks = (selectedproject) => {
@@ -21,7 +21,7 @@ export const useTasks = (selectedproject) => {
             .where('userId', '==', "admin@");
 
         unsubscirbe =
-            selectedproject && !collatedTasksExits(selectedproject)
+            selectedproject && !collatedTasksExist(selectedproject)
                 ? (unsubscirbe = unsubscirbe.where('projectId', '==', selectedproject))
                 : selectedproject === 'Today'
                     ? (unsubscirbe = unsubscirbe.where('data', '==', moment().format('DD/MM/YYYY')))
@@ -75,7 +75,7 @@ export const useProjects = () => {
                     dispatch(setProjects(allProjects))
                 }
             });
-    }, [projects])
+    }, [])
 
     return { projects };
 };

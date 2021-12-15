@@ -1,23 +1,45 @@
 import React from 'react'
+import { useEffect } from 'react';
 import { useTasks } from '../hooks';
 import { Checkbox } from './Checkbox';
+import { collatedTasks } from '../constant';
+import { getTitle, getCollatedTitle, collatedTasksExist } from '../helpers'
 
-export const Tasks= ()=> {
-    const {tasks} = useTasks("1");
-console.log("ghjg",tasks);
+import { useProjectsValue, useSelectedProjectValue, useSelectedProjectvalue } from '../context';
+
+export const Tasks = () => {
+    const  selectedProject  = useSelectedProjectValue();
+    const  projects = useProjectsValue()
+    const { tasks } = useTasks(selectedProject);
+    console.log("ghjg", tasks);
     let projectName = '';
+
+    if (projects && selectedProject && !collatedTasksExist(selectedProject)) {
+        projectName = getTitle(projects, selectedProject).name;
+        console.log('projectName1', projectName);
+    }
+
+    if (collatedTasksExist(selectedProject) && selectedProject) {
+        projectName = getCollatedTitle(collatedTasks, selectedProject).name
+        console.log('projectName2', projectName);
+    }
+
+    useEffect(() => {
+        
+        document.title = `${projectName}`
+    }, [])
     return (
         <div className='tasks' data-testid="tasks">
-            <h2 data-testid="project-name">{projectName}</h2>    
+            <h2 data-testid="project-name">{projectName}</h2>
 
             <ul className="tasks__list">
-            
-            {tasks.map(task =>(
-                <li key={`${task.id}`}>
-                    <Checkbox id={task.id} />
-                    <span>{task.task}</span>
-                </li>
-            ))}</ul>
+
+                {tasks.map(task => (
+                    <li key={`${task.id}`}>
+                        <Checkbox id={task.id} />
+                        <span>{task.task}</span>
+                    </li>
+                ))}</ul>
         </div>
     )
 }

@@ -6,7 +6,8 @@ import { useSelector, useDispatch } from 'react-redux';
 export const ProjectsContext = createContext();
 export const ProjectsProvider = ({ children }) => {
    // const dispatch = useDispatch()
-    const {projects}=useProjects()
+    const {projects} = useProjects()
+    console.log("deve",projects);
     //const projects = useSelector((state) => state.projects.project);
 
     return (
