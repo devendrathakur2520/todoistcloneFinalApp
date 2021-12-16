@@ -8,7 +8,7 @@ import { IndividualProject, InduvisualProject } from './IndividualProject';
 export const Projects = ({ activeValue = null }) => {
     const [active, setActive] = useState(activeValue);
     const dispatch = useDispatch();
-    const { setSelectedProject } = useSelectedProjectValue();
+    const setSelectedProject  = useSelectedProjectValue();
     const  projects = useProjectsValue();
     console.log("iiiiiiiii", projects);
 

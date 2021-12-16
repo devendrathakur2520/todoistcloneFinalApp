@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import {FaTrashAlt} from 'react-icons/fa';
 import { useProjectsValue,useSelectedProjectValue } from "../../context";
-import { firebase } from "../../firebase";
+import {firebase} from '../../firebase'
 import React from 'react'
 import { useDispatch } from "react-redux";
 import { setProjects,setselectedProject } from "../../actions";
@@ -10,13 +10,14 @@ export const IndividualProject =({project})=> {
     const dispatch = useDispatch()
     const [showConfirm,setShowConfirm] = useState(false);
     const [projects] = useProjectsValue(false);
-    const [selectedProject] = useSelectedProjectValue();
-   
+    // const [selectedProject] = useSelectedProjectValue();
+
+
     const deleteProject = docId => {
         firebase
         .firestore()
         .collection('projects')
-        .docId(docId)
+        .doc(docId)
         .delete()
         .then(()=>{
             dispatch(setProjects([...projects]))

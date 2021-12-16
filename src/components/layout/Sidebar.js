@@ -9,11 +9,11 @@ import  {Projects}  from './Projects';
 import { useDispatch } from 'react-redux';
 import { setselectedProject } from '../../actions';
 import { useSelectedProjectValue } from '../../context';
-import  AddProject  from '../AddProject';
+import AddProject from '../AddProject';
 
 export const Sidebar = () => {
   const dispatch = useDispatch()
-  const { setSelectedProject } = useSelectedProjectValue();
+  // const { setSelectedProject } = useSelectedProjectValue();
   const [active, setActive] = useState('inbox');
   const [showProjects, setShowProjects] = useState(true);
 
