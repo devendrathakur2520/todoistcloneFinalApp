@@ -5,6 +5,9 @@ import projects from './setProjects';
 import selectedprojects from './setSelectedProjects';
 import shows from './setShow';
 import showMains from './setShoMain';
+import projectNames from './setProjectName';
+import addTasks from './AddTask';
+
 export default combineReducers({
  
    tasks,
@@ -13,5 +16,7 @@ export default combineReducers({
    selectedprojects,
    shows,
    showMains,
+   projectNames,
+   addTasks,
 
 });

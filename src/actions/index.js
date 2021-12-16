@@ -19,3 +19,10 @@ export const setShow = (payload) => ({ type: SET_SHOW, payload });
 
 export const SET_SHOW_MAIN = 'SET_SHOW';
 export const setShowMain = (payload) => ({ type: SET_SHOW_MAIN, payload });
+
+
+export const SET_PROJECT_NAME = 'SET_PROJECT_NAME';
+export const setProjectName = (payload) => ({ type: SET_PROJECT_NAME, payload });
+
+export const ADD_TASK = 'ADD_TASK';
+export const setTask = (payload) => ({ type: ADD_TASK, payload });

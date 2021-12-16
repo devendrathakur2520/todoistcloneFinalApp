@@ -3,7 +3,7 @@ import { firebase } from '../firebase'
 import { useDispatch,useSelector } from 'react-redux'
 import { useState } from 'react'
 import { generatePushId } from '../helpers'
-import { setProjects,setShow } from '../actions'
+import { setProjects,setShow,setProjectName } from '../actions'
 import { useProjectsValue } from '../context'
 export default function AddProject() {
 
@@ -12,7 +12,8 @@ export default function AddProject() {
     // const [show, setShow] = useState(shouldShow);
      const show = useSelector(state => state.shows.show)
      console.log("hjfdhfjj",show);
-    const [projectName, setProjectName] = useState('');
+    // const [projectName, setProjectName] = useState('');
+    const projectName = useSelector(state => state.projectNames.projectName)
     console.log("dsdsdfsdd", projectName);
 
     const projectId = generatePushId();
@@ -30,7 +31,7 @@ export default function AddProject() {
             })
             .then(() => {
                 dispatch(setProjects([...projects]));
-                setProjectName('');
+                dispatch(setProjectName(''));
                 dispatch(setShow(false));
             });
 
@@ -40,7 +41,7 @@ export default function AddProject() {
                 <div className="add-project__input" data-testid="add-project-inner">
                     <input
                         value={projectName}
-                        onChange={(e) => setProjectName(e.target.value)}
+                        onChange={(e) => dispatch(setProjectName(e.target.value))}
                         className="add-project__name"
                         data-testid="project-name"
                         type="text"
