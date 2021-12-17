@@ -3,13 +3,15 @@ import {FaTrashAlt} from 'react-icons/fa';
 import { useProjectsValue,useSelectedProjectValue } from "../../context";
 import {firebase} from '../../firebase'
 import React from 'react'
-import { useDispatch } from "react-redux";
-import { setProjects,setselectedProject } from "../../actions";
+import { useDispatch,useSelector } from "react-redux";
+import { setProjects,setselectedProject,setShowConfirm } from "../../actions";
 
 export const IndividualProject =({project})=> {
     const dispatch = useDispatch()
-    const [showConfirm,setShowConfirm] = useState(false);
+   // const [showConfirm,setShowConfirm] = useState(false);
     const [projects] = useProjectsValue(false);
+    const showConfirm = useSelector(state => state.showConfirms.showconfirm)
+
     // const [selectedProject] = useSelectedProjectValue();
 
 
@@ -31,8 +33,8 @@ export const IndividualProject =({project})=> {
             <span className ="sidebar__project-name">{project.name}</span>
             <span className ="sidebar__project-delete" data-testid="delete-project" 
             role="button"
-            onClick={()=>setShowConfirm(!showConfirm)}
-            onKeyDown={()=>setShowConfirm(!showConfirm)}>
+            onClick={()=>dispatch(setShowConfirm(!showConfirm))}
+            onKeyDown={()=>dispatch(setShowConfirm(!showConfirm))   }>
                 <FaTrashAlt/>
                 {showConfirm && (
           <div className="project-delete-modal">

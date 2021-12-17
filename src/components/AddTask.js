@@ -3,21 +3,41 @@ import { FaRegListAlt, FaRegCalendarAlt } from 'react-icons/fa';
 import { firebase } from '../firebase';
 import moment from 'moment';
 import { useDispatch, useSelector } from 'react-redux';
-import { setShowMain, setTask } from '../actions';
+import { setShowMain, setTask,setProject,setShowProjectOverlay} from '../actions';
 import { useState } from 'react';
+import {ProjectOverlay} from './ProjectOverlay';
+import {TaskDate} from './TaskDate';
+import {setShowTaskDate,setTaskDate } from '../actions';
 import { generatePushId } from '../helpers';
 import { useProjectsValue } from '../context';
 
-
 export default function AddTask() {
+
+   const  showAddTaskMain = true;
+
+   const shouldShowMain = false;
+
     const dispatch = useDispatch()
+    const [  showQuickAddTask,  setShowQuickAddTask] = useState(true)
     // const [show, setShow] = useState(shouldShow);
-    const [project, setProject] = useState('');
-    const show = useSelector(state => state.shows.show)
+    //const [project, setProject] = useState('');
+    const project = useSelector(state => state.projectss.project)
     const showMain = useSelector(state => state.showMains.showMain)
     const selectedProject = useSelector((state) => state.selectedprojects.selectedProject);
+
+    // const [task, setTask] = useState('');
+    //const [taskDate, setTaskDate] = useState('');
+    const taskDate = useSelector((state) => state.taskDates.taskdate);
+
+
+    //  const [showProjectOverlay, setShowProjectOverlay] = useState(false);
+     const ShowProjectOverlay = useSelector((state) => state.showProjectOverlays.showProjectOverlay);
+
+    // const [showTaskDate, setShowTaskDate] = useState(false);
+    const showTaskDate = useSelector((state) => state.showTaskdates.showTaskdate);
+
     console.log("hjfdhfjjppppppp", showMain);
-    //  const [task, setTask] = useState('');
+    //const [task, setTask] = useState('');
     const task = useSelector(state => state.addTasks.task)
     console.log("dsdsdfsdd", task);
 
@@ -35,43 +55,93 @@ export default function AddTask() {
         } else if (projectId === 'NEXT_7') {
             collatedDate = moment().add(7, 'days').format('DD/MM/YYYY');
         }
-        task && projectId &&
+
+        return (
+            task && projectId &&
             firebase
                 .firestore()
                 .collection('tasks')
                 .add({
+                    archived: false,
                     projectId,
                     task,
+                    date: collatedDate || taskDate,
                     userId: 'admin@',
                 })
                 .then(() => {
                     // dispatch(setProjects([...projects]));
                     // setProjectName('');
                     dispatch(setShowMain(''));
-                });
+                   dispatch( setTask(''));
+                    dispatch(setProject(''));
+                   dispatch( setShowMain(''));
+                   dispatch( setShowProjectOverlay(false));
+                })
+        )
 
     }
     return (
         <div>
+     
+        <div className="add-task__main" data-testid="add-task-main">
+         
+
+            <div className="add-task__main" data-testid="add-task-main">
+         
+              <div data-testid="quick-add-task">
+               
+                <span
+                  className="add-task__cancel-x"
+                  data-testid="add-task-quick-cancel"
+                  aria-label="Cancel adding task"
+                  onClick={() => {
+                    dispatch(setShowMain(false));
+                    dispatch(setShowProjectOverlay(false));
+                
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      dispatch(setShowMain(false));
+                     dispatch (setShowProjectOverlay(false));
+                     
+                    }
+                  } }
+                  tabIndex={0}
+                  role="button"
+                >
+                 
+                </span>
+              </div>
+    
+          <ProjectOverlay
+          showProjectOverlay={ShowProjectOverlay} 
+          />
+          <TaskDate
+          showTaskDate={showTaskDate}
+          />
+          </div>
             <div className="add-task__main" data-testid="add-task__main">
                 {showMain && (
                     <div className="add-task__input" data-testid="add-task-inner">
-                        <input
-                            className="add-task__content"
-                            aria-label="Enter your task"
-                            data-testid="add-task-content"
-                            type="text"
-                            value={task}
-                            onChange={(e) => dispatch(setTask(e.target.value))}
-                        />
-                        <button
-                            className="add-task__submit"
-                            type="button"
-                            onClick={() => addTask()}
-                            data-testid="add-task-submit"
-                        >
-                            Add Task
-                        </button>
+         <input
+            className="add-task__content"
+            aria-label="Enter your task"
+            data-testid="add-task-content"
+            type="text"
+            value={task}
+            onChange={(e) => setTask(e.target.value)}
+          />
+          <button
+            type="button"
+            className="add-task__submit"
+            data-testid="add-task"
+            onClick={() =>addTask()
+            
+            }
+          >
+            Add Task
+          </button>
+          
                         <span
                             aria-label="Cancel adding task"
                             data-testid="hide-task-overlay"
@@ -101,7 +171,31 @@ export default function AddTask() {
                 >
                     Add Task
                 </span>
+                <span
+                    className="add_task__project"
+                    data-testid="show-task-date-overlay"
+                    onClick={() => dispatch(setShowProjectOverlay(!ShowProjectOverlay))}
+                >
+                    <FaRegListAlt />
+                </span>
+
+                <span
+                    className="add-task__date"
+                    data-testid="show-task-date-overlay"
+                    onClick={() => dispatch(setShowTaskDate(!showTaskDate))}
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter') dispatch(setShowTaskDate(!showTaskDate));
+                    }}
+                    tabIndex={0}
+                    role="button"
+                >
+                    <FaRegCalendarAlt />
+                </span>
             </div>
         </div>
+        </div>
     )
-}
+                }
+
+
+
