@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { FaRegListAlt, FaRegCalendarAlt } from 'react-icons/fa';
 import { firebase } from '../firebase';
@@ -12,32 +13,25 @@ import { generatePushId } from '../helpers';
 import { useProjectsValue } from '../context';
 
 export default function AddTask() {
-
-   const  showAddTaskMain = true;
-
-   const shouldShowMain = false;
-
     const dispatch = useDispatch()
-    const [  showQuickAddTask,  setShowQuickAddTask] = useState(true)
-    // const [show, setShow] = useState(shouldShow);
-    //const [project, setProject] = useState('');
+
+  ;
     const project = useSelector(state => state.projectss.project)
     const showMain = useSelector(state => state.showMains.showMain)
     const selectedProject = useSelector((state) => state.selectedprojects.selectedProject);
 
-    // const [task, setTask] = useState('');
-    //const [taskDate, setTaskDate] = useState('');
+  
     const taskDate = useSelector((state) => state.taskDates.taskdate);
 
 
-    //  const [showProjectOverlay, setShowProjectOverlay] = useState(false);
+    
      const ShowProjectOverlay = useSelector((state) => state.showProjectOverlays.showProjectOverlay);
 
-    // const [showTaskDate, setShowTaskDate] = useState(false);
+ 
     const showTaskDate = useSelector((state) => state.showTaskdates.showTaskdate);
 
     console.log("hjfdhfjjppppppp", showMain);
-    //const [task, setTask] = useState('');
+   
     const task = useSelector(state => state.addTasks.task)
     console.log("dsdsdfsdd", task);
 
@@ -69,8 +63,7 @@ export default function AddTask() {
                     userId: 'admin@',
                 })
                 .then(() => {
-                    // dispatch(setProjects([...projects]));
-                    // setProjectName('');
+                    
                     dispatch(setShowMain(''));
                    dispatch( setTask(''));
                     dispatch(setProject(''));
@@ -84,10 +77,7 @@ export default function AddTask() {
         <div>
      
         <div className="add-task__main" data-testid="add-task-main">
-         
-
             <div className="add-task__main" data-testid="add-task-main">
-         
               <div data-testid="quick-add-task">
                
                 <span
@@ -109,16 +99,13 @@ export default function AddTask() {
                   tabIndex={0}
                   role="button"
                 >
-                 
                 </span>
               </div>
     
           <ProjectOverlay
-          showProjectOverlay={ShowProjectOverlay} 
-          />
+          showProjectOverlay={ShowProjectOverlay} />
           <TaskDate
-          showTaskDate={showTaskDate}
-          />
+          showTaskDate={showTaskDate}/>
           </div>
             <div className="add-task__main" data-testid="add-task__main">
                 {showMain && (
@@ -129,7 +116,7 @@ export default function AddTask() {
             data-testid="add-task-content"
             type="text"
             value={task}
-            onChange={(e) => setTask(e.target.value)}
+            onChange={(e) => dispatch(setTask(e.target.value))}
           />
           <button
             type="button"
@@ -196,6 +183,3 @@ export default function AddTask() {
         </div>
     )
                 }
-
-
-

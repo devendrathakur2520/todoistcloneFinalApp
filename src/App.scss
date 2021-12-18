@@ -1,10 +1,7 @@
 
-/* ==========================================================================
-   LETS BUILD TODOIST
-   ========================================================================== */
+
    @import url('https://fonts.googleapis.com/css?family=Roboto:400,700,900');
 
-   // General Settings
    html {
      -webkit-box-sizing: border-box;
              box-sizing: border-box;
@@ -31,13 +28,12 @@
      padding: 0;
    }
    
-   // Variables
+
    $generic-box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 4px 11px;
    $generic-border: 1px solid #f1f1f1;
    $generic-bg: #db4c3f;
    
-   /* Mixins
-     ============================================ */
+
    @mixin box-overlay() {
      -webkit-box-shadow: $generic-box-shadow;
              box-shadow: $generic-box-shadow;
@@ -133,8 +129,7 @@
      }
    }
    
-   /* Darkmode
-     ============================================ */
+  
    .darkmode {
      header {
        -webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,0.15);
@@ -144,8 +139,7 @@
      }
    }
    
-   /* Header
-     ============================================ */
+ 
    header {
      border-bottom: solid 1px #ca2100;
      background-color: $generic-bg;
@@ -250,8 +244,7 @@
      }
    }
    
-   /* Sidebar
-     ============================================ */
+   
    .sidebar {
      @include no-select();
      width: 266px;
@@ -419,8 +412,7 @@
      }
    }
    
-   /* Show Confirm Delete
-     ============================================ */
+   
    .project-delete-modal {
      position: relative;
    
@@ -445,9 +437,7 @@
        }
      }
    }
-   
-   /* Main Content
-     ============================================ */
+
    .content {
      display: grid;
      -webkit-box-align: center;
@@ -458,8 +448,7 @@
      margin: auto;
    }
    
-   /* Tasks
-     ============================================ */
+
    .tasks {
      width: 656px;
      background-color: white;
@@ -526,8 +515,7 @@
      }
    }
    
-   /* Add Task
-     ============================================ */
+   
    .add-task {
      &__overlay {
        background: rgba(102,102,102,0.5);
@@ -632,8 +620,7 @@
      margin-left: 15px;
    }
    
-   /* Task Date
-     ============================================ */
+
    .task-date {
      @include box-overlay();
      background-color: #fff;

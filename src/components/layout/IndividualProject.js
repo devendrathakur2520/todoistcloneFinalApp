@@ -7,14 +7,10 @@ import { useDispatch,useSelector } from "react-redux";
 import { setProjects,setselectedProject,setShowConfirm } from "../../actions";
 
 export const IndividualProject =({project})=> {
+    
     const dispatch = useDispatch()
-   // const [showConfirm,setShowConfirm] = useState(false);
     const [projects] = useProjectsValue(false);
     const showConfirm = useSelector(state => state.showConfirms.showconfirm)
-
-    // const [selectedProject] = useSelectedProjectValue();
-
-
     const deleteProject = docId => {
         firebase
         .firestore()

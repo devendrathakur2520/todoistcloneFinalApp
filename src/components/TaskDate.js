@@ -21,7 +21,7 @@ return (
             }}
             onKeyDown={(e) => {
               if (e.key === 'Enter') {
-              dispatch(  setShowTaskDate(false));
+              dispatch(setShowTaskDate(false));
                 dispatch(setTaskDate(moment().format('DD/MM/YYYY')));
               }
             }}

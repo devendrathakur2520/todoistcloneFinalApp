@@ -31,13 +31,16 @@
 import React, { useState } from 'react';
 import { FaPizzaSlice } from 'react-icons/fa';
 import PropTypes from 'prop-types';
-import { setDarkMode } from '../../actions';
+import { setDarkMode,setShowMain } from '../../actions';
 import AddTask from '../AddTask'
 import { useDispatch } from 'react-redux';
 
 export const Header = ({ darkMode }) => {
 
     const dispatch = useDispatch();
+    const handleClick=()=>{
+dispatch(setShowMain(true))
+    }
     return (
         <>
 
@@ -48,7 +51,7 @@ export const Header = ({ darkMode }) => {
                     </div>
                     <div className="settings">
                         <ul>
-                            <li className="settings__add">
+                            <li className="settings__add" onClick={handleClick}>
 
                                 +
 
