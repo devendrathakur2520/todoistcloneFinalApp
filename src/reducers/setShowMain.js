@@ -1,5 +1,5 @@
 
-import { SET_SHOW, SET_SHOW_MAIN, SET_TASK } from "../actions";
+import {  SET_SHOW_MAIN } from "../actions";
 const initialState = {
     showMain:false,
    

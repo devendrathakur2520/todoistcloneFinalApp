@@ -4,14 +4,13 @@ import 'firebase/compat/firestore';
 
 
 const firebaseConfig = firebase.initializeApp({
-  apiKey: "AIzaSyCHU27y5rsMZjBUBDCoPJ7ZxAmbT2JYd4w",
-  authDomain: "todoist-app-416bd.firebaseapp.com",
-  databaseURL: "https://todoist-app-416bd-default-rtdb.firebaseio.com",
-  projectId: "todoist-app-416bd",
-  storageBucket: "todoist-app-416bd.appspot.com",
-  messagingSenderId: "796056810582",
-  appId: "1:796056810582:web:dd095b2c693fb1f7e337f7",
-  measurementId: "G-0GMRZLLYW6",
+  apiKey: "AIzaSyBaUCzanqFdcHVhTIjCcYEy9xWfjul3DqI",
+  authDomain: "todoist-clone-a8b2d.firebaseapp.com",
+  databaseURL: "https://todoist-clone-a8b2d-default-rtdb.firebaseio.com",
+  projectId: "todoist-clone-a8b2d",
+  storageBucket: "todoist-clone-a8b2d.appspot.com",
+  messagingSenderId: "984629856873",
+  appId: "1:984629856873:web:fb79ad963538faeb42b0f8"
   // apiKey: "AIzaSyCI5hnChx3bNfZY9CfJCAlWIA0cAAPn2OI",
   // authDomain: "todoist-app-122fc.firebaseapp.com",
   // databaseURL: "https://todoist-app-122fc-default-rtdb.firebaseio.com",

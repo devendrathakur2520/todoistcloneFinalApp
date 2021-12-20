@@ -4,7 +4,7 @@ import Archiveds from './setArchived';
 import projects from './setProjects';
 import selectedprojects from './setSelectedProjects';
 import shows from './setShow';
-import showMains from './setShoMain';
+import showMains from './setShowMain';
 import projectNames from './setProjectName';
 import addTasks from './AddTask';
 import projectss from './setProject';

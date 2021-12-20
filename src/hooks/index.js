@@ -10,10 +10,10 @@ export const useTasks = (selectedproject) => {
     const tasks = useSelector((state) => state.tasks.task);
     const dispatch = useDispatch();
 
-    console.log("rohit", tasks);
+    console.log("Devendra", tasks);
     // const [archivedTasks, setArchivedTasks] = useState([]);
     const archivedTasks = useSelector((state) => state.Archiveds.Archived);
-    console.log("hjhkf",archivedTasks);
+    console.log("Archived",archivedTasks);
 
     useEffect(() => {
         let unsubscirbe = firebase.firestore()

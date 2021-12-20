@@ -13,7 +13,7 @@ export const setselectedProject = (payload) => ({ type: SET_SELECTEDPROJECT, pay
 export const SET_SHOW = 'SET_SHOW';
 export const setShow = (payload) => ({ type: SET_SHOW, payload });
 
-export const SET_SHOW_MAIN = 'SET_SHOW';
+export const SET_SHOW_MAIN = 'SET_SHOW_MAIN';
 export const setShowMain = (payload) => ({ type: SET_SHOW_MAIN, payload });
 
 export const SET_PROJECT_NAME = 'SET_PROJECT_NAME';
